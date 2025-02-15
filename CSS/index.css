@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 
 * {
     margin: 0;
@@ -9,7 +11,251 @@
 html, body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: #F6F6F6;
     height: 100%;
     width: 100%;
+}
+
+body {
+    padding: 22px;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+aside {
+    display: flex;
+    width: 100%;
+    max-width: 358px;
+    height: 100%;
+    padding: 10px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+aside section {
+    display: flex;
+    width: 100%;
+    padding: 10px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    border-bottom: 2px solid #F6F6F6;
+}
+
+.account-img-placeholder {
+    display: flex;
+    padding: 10px 0px;
+    align-items: center;
+}
+
+.account-information-wrapper {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex: 1 0 0;
+}
+
+.account-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(118, 118, 118, 0.50);
+}
+
+.app-name {
+    color: #000;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.account-name, .account-role {
+    color: #767676;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.aside-title {
+    color: #2F2B42;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.aside-main-list {
+    display: flex;
+    width: 100%;
+    padding: 10px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.aside-ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.li-default {
+    display: flex;
+    height: 53px;
+    width: 100%;
+    padding: 5px 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.li-active {
+    display: flex;
+    height: 53px;
+    width: 100%;
+    padding: 5px 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background: #EBEBEB;
+}
+
+.aside-li-div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.list-emoticon {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.list-text {
+    color: var(--main-dark, #2F2B42);
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.list-count-wrapper {
+    display: flex;
+    height: 26px;
+    padding: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: #FFF;
+}
+
+.list-count {
+    color: var(--main-dark, #2F2B42);
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.create-new-list-btn {
+    display: flex;
+    height: 53px;
+    padding: 5px 10px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: stretch;
+    background-color: #FFF;
+    border: none;
+}
+
+.create-new-list-btn div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-new-list-text {
+    color: var(--main-dark, #2F2B42);
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.shortcut-wrapper {
+    display: flex;
+    width: 68px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.shortcut-container {
+    display: flex;
+    height: 26px;
+    padding: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: rgba(235, 235, 235, 0.50);
+}
+
+.shortcut {
+    color: var(--main-dark, #2F2B42);
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
