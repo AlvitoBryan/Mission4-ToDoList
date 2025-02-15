@@ -73,6 +73,7 @@ aside section {
 
 .account-information-wrapper {
     display: flex;
+    width: 100%;
     padding: 10px;
     flex-direction: column;
     justify-content: flex-end;
@@ -142,6 +143,15 @@ aside section {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+    transition: background-color 300ms ease 0s, color 300ms ease 0s;
+}
+
+.li-default:hover {
+    background: #EBEBEB;
+}
+
+.li-default:hover .list-count-wrapper {
+    background: #FFF;
 }
 
 .li-active {
@@ -209,6 +219,20 @@ aside section {
     align-self: stretch;
     background-color: #FFF;
     border: none;
+    border-radius: 10px;
+    transition: background-color 300ms ease 0s, color 300ms ease 0s;
+}
+
+.create-new-list-btn:focus {
+    border: none;
+}
+
+.create-new-list-btn:hover {
+    background: #EBEBEB;
+}
+
+.create-new-list-btn:hover .shortcut-container {
+    background: #FFF;
 }
 
 .create-new-list-btn div {
@@ -259,3 +283,202 @@ aside section {
     font-weight: 600;
     line-height: normal;
 }
+
+.popUp-newList {
+    display: none;
+    width: 100%;
+    max-width: 531px;
+    height: 586px;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    margin: auto;
+}
+
+.popUp-newList-h2 {
+    color: var(--main-dark, #2F2B42);
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.newList-textArea {
+    display: flex;
+    height: 147px;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 7px;
+    border: 1px dashed rgba(0, 0, 0, 0.50);
+    background: #F6F6F6;
+    resize: none;
+    text-align: center;
+
+    color: rgba(0, 0, 0, 0.50);
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.newList-textArea:active, .newList-textArea:focus-visible {
+    border: 1px dashed #5243FE;
+    outline: 1px dashed #5243FE;
+}
+
+.input-radio-wrapper {
+    display: flex;
+    padding: 19px 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    align-self: stretch;
+    border-radius: 7px;
+    background: #F6F6F6;
+}
+
+.input-radio-container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.input-radio-container {
+    position: relative;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    background: #FFF;
+    
+}
+
+.radio {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+
+.input-radio-container:focus-within {
+    border: 1px solid #767676;
+    background: #EBEBEB;
+}
+
+.radio-label {
+    color: #000;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.dialog-btn-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 23px;
+    align-self: stretch;
+}
+
+.cancel-newList-btn {
+    display: flex;
+    width: 100%;
+    padding: 6px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    border-radius: 16px;
+    background: #FFA7A7;;
+    border: none;
+
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: background-color 300ms ease 0s, color 300ms ease 0s;
+}
+
+.create-newList-btn {
+    display: flex;
+    width: 100%;
+    padding: 6px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    border-radius: 16px;
+    background: rgba(0, 140, 255, 0.54);;
+    border: none;
+
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: background-color 300ms ease 0s, color 300ms ease 0s;
+}
+
+.create-newList-btn:hover {
+    background-color: #5243FE;
+}
+
+.cancel-newList-btn:hover {
+    background-color: #FF6B6B;;
+}
+
+dialog {
+    display: none;
+    opacity: 0;
+    translate: 0 -25vh;
+    transition-property: display opacity;
+    transition-duration: 0.8s;
+    transition-behavior: allow-discrete;
+}
+
+dialog[open] {
+    display: flex;
+    opacity: 1;
+    translate: 0 0;
+
+    @starting-style {
+        opacity: 0;
+        translate: 0 25vh;
+    }
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(2px);
+}
+
+:modal {
+    border: none;
+  }

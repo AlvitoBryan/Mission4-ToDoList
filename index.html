@@ -26,30 +26,19 @@
         <h2 class="aside-title">Main Menu</h2>
 
         <div class="aside-main-list">
-          <ul class="aside-ul">
-            <li class="li-active">
-              <div class="aside-li-div">
-                <p class="list-emoticon">🏠</p>
-                <p class="list-text">Home</p>
-              </div>
-
-              <div class="list-count-wrapper">
-                <p class="list-count">14</p>
-              </div>
-            </li>
-
+          <ul id="list-container" class="aside-ul">
             <li class="li-default">
               <div class="aside-li-div">
                 <p class="list-emoticon">🏠</p>
                 <p class="list-text">Home</p>
               </div>
 
-              <div class="list-count-wrapper">
+              <!-- <div class="list-count-wrapper">
                 <p class="list-count">14</p>
-              </div>
+              </div> -->
             </li>
 
-            <li class="li-default">
+            <!-- <li class="li-default">
               <div class="aside-li-div">
                 <p class="list-emoticon">🏠</p>
                 <p class="list-text">Home</p>
@@ -58,12 +47,23 @@
               <div class="list-count-wrapper">
                 <p class="list-count">14</p>
               </div>
-            </li>
+            </li> -->
+
+            <!-- <li class="li-default">
+              <div class="aside-li-div">
+                <p class="list-emoticon">🏠</p>
+                <p class="list-text">Home</p>
+              </div>
+
+              <div class="list-count-wrapper">
+                <p class="list-count">14</p>
+              </div>
+            </li> -->
           </ul>
         </div>
       </section>
 
-      <button class="create-new-list-btn">
+      <button class="create-new-list-btn" id="open-popUp">
         <div>
           <div class="icon-placeholder">
             <img src="/assets/img/add.svg" alt="add">
@@ -83,5 +83,75 @@
 
     </aside>
   </main>
+
+  <dialog data-modal class="popUp-newList">
+    <h2 class="popUp-newList-h2">What's your list name?</h2>
+
+    <textarea class="newList-textArea" name="newList-textArea" id="newList-textArea" placeholder="Write your list name here..."></textarea>
+
+    <h2 class="popUp-newList-h2">Select the icon</h2>
+
+    <div class="input-radio-wrapper">
+
+      <div class="input-radio-container-wrapper">
+
+        <div class="input-radio-container">
+          <input class="radio" value="home" id="home-emot" type="radio" name="radio">
+          <label class="radio-label" for="home-emot">🏠</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="briefcase" id="briefcase-emot" type="radio" name="radio">
+          <label class="radio-label" for="briefcase-emot">💼</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="checklist" id="checklist-emot" type="radio" name="radio">
+          <label class="radio-label" for="checklist-emot">✅</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="deleted" id="deleted-emot" type="radio" name="radio">
+          <label class="radio-label" for="deleted-emot">❌</label>
+        </div>
+
+      </div>
+
+      <div class="input-radio-container-wrapper">
+
+        <div class="input-radio-container">
+          <input class="radio" value="calendar" id="calendar-emot" type="radio" name="radio">
+          <label class="radio-label" for="calendar-emot">🗓️</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="love" id="love-emot" type="radio" name="radio">
+          <label class="radio-label" for="love-emot">❤️</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="night" id="night-emot" type="radio" name="radio">
+          <label class="radio-label" for="night-emot">🌛</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="idea" id="idea-emot" type="radio" name="radio">
+          <label class="radio-label" for="idea-emot">💡</label>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="dialog-btn-wrapper">
+
+      <button id="cancel-newList-btn" class="cancel-newList-btn">Cancel</button>
+      <button id="create-newList-btn" class="create-newList-btn" onclick="addList()">Create list</button>
+      
+    </div>
+  </dialog>
+
+
+  <script src="script.js"></script>
 </body>
 </html>
