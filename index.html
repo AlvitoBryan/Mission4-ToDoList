@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ToDoList | AlvitoBryan</title>
-  <link rel="stylesheet" href="/CSS/index.css" />
+  <link rel="stylesheet" href="/CSS/index.css">
   <link rel="stylesheet" href="/CSS/header.css">
   <link rel="stylesheet" href="/CSS/newTask.css">
+  <link rel="stylesheet" href="/CSS/ToDoList.css">
 </head>
 <body>
   <main>
@@ -97,13 +98,83 @@
           <img src="/assets/img/setting.svg" alt="setting">
         </div>
       </header>
+
+      <section class="ToDoList-mainSection">
+        <div class="ToDoList-frame">
+          <ul id="task-container" class="task-ul">
+
+            <li class="task-default active">
+              <div class="task-content-wrapper">
+                <div class="task-content">
+                  <img class="checkbox active" src="/assets/img/checklist_empty.svg" alt="checkbox">
+                  <p class="task-content-text">Jogging</p>
+                  <div class="task-emoticon-wrapper">
+                    <p class="task-emoticon">❤️</p>
+                  </div>
+                </div>
+
+                <div class="priority">
+                  <div class="priority-dot">
+                    <img src="assets/img/low_priority.svg" alt="dot">
+                  </div>
+                  <p class="priority-text">Low</p>
+                </div>
+              </div>
+
+              <div class="task-date-delete">
+                <p class="task-date">Wed 6 July 2023</p>
+                <div class="task-delete">
+                  <img src="/assets/img/trash-bin.svg" alt="trash-bin">
+                </div>
+              </div>
+            </li>
+
+            <li class="task-default">
+              <div class="task-content-wrapper">
+                <div class="task-content">
+                  <img class="checkbox" src="/assets/img/checklist_empty.svg" alt="checkbox">
+                  <p class="task-content-text">Jogging</p>
+                  <div class="task-emoticon-wrapper">
+                    <p class="task-emoticon">❤️</p>
+                  </div>
+                </div>
+
+                <div class="priority">
+                  <div class="priority-dot">
+                    <img src="assets/img/low_priority.svg" alt="dot">
+                  </div>
+                  <p class="priority-text">Low</p>
+                </div>
+              </div>
+
+              <div class="task-date-delete">
+                <p class="task-date">Wed 6 July 2023</p>
+                <div class="task-delete">
+                  <img src="/assets/img/trash-bin.svg" alt="trash-bin">
+                </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+
+        <div class="delete-list-wrapper">
+          <button class="delete-list-btn">
+            <p class="delete-list-text">Delete List</p>
+            <div class="list-delete">
+              <img src="/assets/img/trash-bin-red.svg" alt="trash-bin">
+            </div>
+          </button>
+        </div>
+      </section>
       
     </section>
 
-    <!-- <div class="create-new-task-wrapper">
+    <div class="create-new-task-wrapper">
       <div class="create-new-task">
         <div class="create-new-task-icon">
-          <img src="/assets/img/add.svg" alt="add">
+          <img src="/assets/img/add_white.svg" alt="add">
         </div>
         <p class="create-new-task-text">Create new task</p>
       </div>
@@ -115,7 +186,7 @@
           <p class="create-new-task-shortcut">T</p>
         </div>
       </div>
-    </div> -->
+    </div>
   </main>
 
 
