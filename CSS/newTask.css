@@ -1,0 +1,65 @@
+.create-new-task-wrapper {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    max-width: 589px;
+    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 30px;
+    background: #000;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.create-new-task {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.create-new-task-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-new-task-text {
+    color: #FFF;
+    font-family: "DM Sans";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.create-new-task-shortcut-container {
+    display: flex;
+    padding: 0px 5px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.create-new-task-shortcut-wrapper {
+    display: flex;
+    padding: 3px 6px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: #FFF;
+}
+
+.create-new-task-shortcut {
+    color: var(--main-dark, #2F2B42);
+    font-family: "DM Sans";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}

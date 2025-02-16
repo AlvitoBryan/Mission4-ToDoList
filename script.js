@@ -49,6 +49,7 @@ function addList(){
     }else{
         let list = document.createElement("li");
         list.classList.add('li-default')
+        list.id = inputText.value
     
         let divList = document.createElement("div");
         divList.classList.add('aside-li-div')
@@ -105,4 +106,19 @@ function addList(){
 }
 
 //========================================================================
+
+document.getElementById("list-container").addEventListener("click", function (event) {
+    let clickedItem = event.target.closest(".li-default"); // Cari elemen terdekat dengan class 'li-default'
+    
+    if (clickedItem) {
+        console.log("Klik terdeteksi pada:", clickedItem.innerText);
+
+        // Hapus 'active' dari semua item
+        document.querySelectorAll(".li-default").forEach(i => i.classList.remove("active"));
+
+        // Tambahkan 'active' ke item yang diklik
+        clickedItem.classList.add("active");
+    }
+});
+
 
