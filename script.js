@@ -126,6 +126,20 @@ document.getElementById("list-container").addEventListener("click", function (ev
     }
 });
 
+document.getElementById("default-list-container").addEventListener("click", function (event) {
+    let clickedItem = event.target.closest(".li-default"); // Cari elemen terdekat dengan class 'li-default'
+    
+    if (clickedItem) {
+        console.log("Klik terdeteksi pada:", clickedItem.innerText);
+
+        // Hapus 'active' dari semua item
+        document.querySelectorAll(".li-default").forEach(i => i.classList.remove("active"));
+
+        // Tambahkan 'active' ke item yang diklik
+        clickedItem.classList.add("active");
+    }
+});
+
 // SIDE LIST ACTIVE BUTTON ====================================================================================================
 
 const modalTask = document.querySelector('.popUp-newTask');
@@ -215,6 +229,8 @@ function addTask(){
         let taskCheck = document.createElement("input");
         taskCheck.type = "checkbox"
         taskCheck.value = "check"
+        taskCheck.id = "checkbox-task"
+        taskCheck.name = "task-checkbox"
         taskCheck.classList.add('checkbox');
 
         let taskText = document.createElement("p");
