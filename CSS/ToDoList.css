@@ -82,6 +82,8 @@
 
 
 .task-content-text {
+    width: auto;
+    max-width: 350px;
     color: #000;
     font-family: Poppins;
     font-size: 1.25rem;

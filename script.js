@@ -359,3 +359,24 @@ function addTask(){
 }
 
 // CREATE NEW TASK addTask() ==========================================================================================================
+
+document.getElementById("task-container").addEventListener("click", function (event) {
+    let clickedItem = event.target.closest(".task-default"); // Cari elemen terdekat dengan class 'li-default'
+    let clickedCheckbox = event.target.closest(".checkbox")
+    
+    if (clickedItem) {
+        console.log("Klik terdeteksi pada:", clickedItem.innerText);
+        console.log("Klik terdeteksi pada:", clickedCheckbox);
+
+        // Hapus 'active' dari semua item
+        // document.querySelectorAll(".task-default").forEach(i => i.classList.remove("active"));
+
+        if (clickedItem.classList.contains("active") && clickedCheckbox.classList.contains("active")) {
+            clickedItem.classList.remove("active");
+            clickedCheckbox.classList.remove("active");
+        } else {
+            clickedItem.classList.add("active");
+            clickedCheckbox.classList.add("active");
+        }
+    }
+});
