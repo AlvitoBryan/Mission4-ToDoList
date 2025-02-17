@@ -11,9 +11,11 @@
     background: #000;
 
     position: absolute;
+    z-index: 100;
     left: 50%;
     transform: translateX(-50%);
     bottom: 60px;
+    cursor: pointer;
 }
 
 .create-new-task {

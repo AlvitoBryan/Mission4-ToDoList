@@ -241,6 +241,7 @@ aside section {
     border: none;
     border-radius: 10px;
     transition: background-color 300ms ease 0s, color 300ms ease 0s;
+    cursor: pointer;
 }
 
 .create-new-list-btn:focus {
@@ -471,7 +472,7 @@ aside section {
 }
 
 .cancel-newList-btn:hover {
-    background-color: #FF6B6B;;
+    background-color: #FF6B6B;
 }
 
 dialog {

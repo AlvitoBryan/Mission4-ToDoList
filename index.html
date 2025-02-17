@@ -113,11 +113,11 @@
                   </div>
                 </div>
 
-                <div class="priority">
+                <div class="divPriority-low">
                   <div class="priority-dot">
-                    <img src="assets/img/low_priority.svg" alt="dot">
+                    <img src="/assets/img/low_priority.svg" alt="dot">
                   </div>
-                  <p class="priority-text">Low</p>
+                  <p class="priority-text-low">Low</p>
                 </div>
               </div>
 
@@ -139,11 +139,11 @@
                   </div>
                 </div>
 
-                <div class="priority">
+                <div class="divPriority-low">
                   <div class="priority-dot">
                     <img src="assets/img/low_priority.svg" alt="dot">
                   </div>
-                  <p class="priority-text">Low</p>
+                  <p class="priority-text-low">Low</p>
                 </div>
               </div>
 
@@ -171,7 +171,7 @@
       
     </section>
 
-    <div class="create-new-task-wrapper">
+    <div class="create-new-task-wrapper" id="create-task-btn">
       <div class="create-new-task">
         <div class="create-new-task-icon">
           <img src="/assets/img/add_white.svg" alt="add">
@@ -258,6 +258,88 @@
       
     </div>
   </dialog>
+
+
+  <dialog class="popUp-newTask">
+    <h2 class="popUp-newTask-h2">What's your plan?</h2>
+
+    <textarea class="newTask-textArea" name="newTask-textArea" id="newTask-textArea" placeholder="Write your plan here..."></textarea>
+
+    <h2 class="popUp-newTask-h2">Select the priority</h2>
+
+    <div class="input-priority-wrapper">
+      <input class="radio-priority" value="low" type="radio" name="radio-priority-name" id="priority-low">
+      <label class="radio-priority-label-low" for="priority-low">Low</label>
+      
+      <input class="radio-priority" value="medium" type="radio" name="radio-priority-name" id="priority-medium">
+      <label class="radio-priority-label-medium" for="priority-medium">Medium</label>
+      
+      <input class="radio-priority" value="high" type="radio" name="radio-priority-name" id="priority-high">
+      <label class="radio-priority-label-high" for="priority-high">High</label>
+      
+    </div>
+
+    <h2 class="popUp-newTask-h2">Select the icon</h2>
+
+    <div class="input-radio-wrapper">
+
+      <div class="input-radio-container-wrapper">
+
+        <div class="input-radio-container">
+          <input class="radio" value="diet" id="diet-emot" type="radio" name="radioTask">
+          <label class="radio-label" for="diet-emot">💪</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="food" id="food-emot" type="radio"" name="radioTask">
+          <label class="radio-label" for="food-emot">🍜</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="study" id="study-emot" type="radio" name="radioTask">
+          <label class="radio-label" for="study-emot">📚</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="car" id="car-emot" type="radio" name="radioTask">
+          <label class="radio-label" for="car-emot">🚗</label>
+        </div>
+
+      </div>
+
+      <div class="input-radio-container-wrapper">
+
+        <div class="input-radio-container">
+          <input class="radio" value="sport" id="sport-emot" type="radio" name="radioTask">
+          <label class="radio-label" for="sport-emot">⚽</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="love-task" id="love-emot-task" type="radio" name="radioTask">
+          <label class="radio-label" for="love-emot-task">❤️</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="game" id="game-emot" type="radio" name="radioTask">
+          <label class="radio-label" for="game-emot">🎮</label>
+        </div>
+
+        <div class="input-radio-container">
+          <input class="radio" value="movie" id="movie-emot" type="radio" name="radioTask">
+          <label class="radio-label" for="movie-emot">🍿</label>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="dialog-btn-wrapper">
+
+      <button id="cancel-newTask-btn" class="cancel-newTask-btn">Cancel</button>
+      <button id="create-newTask-btn" class="create-newTask-btn" onclick="addTask()">Create Task</button>
+      
+    </div>
+  </div>
 
 
   <script src="script.js"></script>
