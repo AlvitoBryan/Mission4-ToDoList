@@ -331,6 +331,7 @@ function addTask(){
         divTaskDelete.classList.add("task-delete");
 
         let TaskDelete = document.createElement("img");
+        TaskDelete.classList.add("trash-bin")
         TaskDelete.src = '/assets/img/trash-bin.svg';
         TaskDelete.alt = 'trash-bin'
 
@@ -396,3 +397,16 @@ document.getElementById("task-container").addEventListener("click", function (ev
 });
 
 // MAIN TASK LIST ACTIVE BUTTON & ACTIVE CHECKBOX =============================================================================================================================
+
+
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("trash-bin")) {
+        let listItem = event.target.closest(".task-default"); // Mencari elemen <li> terdekat
+        if (listItem) {
+            listItem.remove(); // Hapus elemen <li>
+            console.log("Task deleted:", listItem.innerText); // Debugging log
+        }
+    }
+});
+
+

@@ -211,6 +211,10 @@
     gap: 10px;
 }
 
+.trash-bin {
+    cursor: pointer;
+}
+
 .delete-list-wrapper {
     display: flex;
     padding: 10px 0px;
