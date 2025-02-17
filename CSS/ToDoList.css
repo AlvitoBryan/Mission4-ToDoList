@@ -80,6 +80,11 @@
     cursor: pointer;
 }
 
+.checkbox[type="checkbox"] {
+    height: 25px;
+    width: 25px;
+}
+
 
 .task-content-text {
     width: auto;

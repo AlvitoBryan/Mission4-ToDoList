@@ -212,10 +212,10 @@ function addTask(){
         let divTaskContent = document.createElement("div");
         divTaskContent.classList.add('task-content');
 
-        let taskCheck = document.createElement("img");
+        let taskCheck = document.createElement("input");
+        taskCheck.type = "checkbox"
+        taskCheck.value = "check"
         taskCheck.classList.add('checkbox');
-        taskCheck.src = "/assets/img/checklist_empty.svg";
-        taskCheck.alt = "checkbox";
 
         let taskText = document.createElement("p");
         taskText.classList.add('task-content-text');
@@ -361,22 +361,22 @@ function addTask(){
 // CREATE NEW TASK addTask() ==========================================================================================================
 
 document.getElementById("task-container").addEventListener("click", function (event) {
-    let clickedItem = event.target.closest(".task-default"); // Cari elemen terdekat dengan class 'li-default'
+    let clickedItem = event.target.closest(".task-default");
     let clickedCheckbox = event.target.closest(".checkbox")
     
     if (clickedItem) {
         console.log("Klik terdeteksi pada:", clickedItem.innerText);
         console.log("Klik terdeteksi pada:", clickedCheckbox);
 
-        // Hapus 'active' dari semua item
-        // document.querySelectorAll(".task-default").forEach(i => i.classList.remove("active"));
-
         if (clickedItem.classList.contains("active") && clickedCheckbox.classList.contains("active")) {
             clickedItem.classList.remove("active");
             clickedCheckbox.classList.remove("active");
-        } else {
+        }
+        else if(!clickedItem.classList.contains("active") && !clickedCheckbox.classList.contains("active")){
             clickedItem.classList.add("active");
             clickedCheckbox.classList.add("active");
         }
     }
 });
+
+// MAIN TASK LIST ACTIVE BUTTON & ACTIVE CHECKBOX =============================================================================================================================
