@@ -30,7 +30,7 @@
 
         <div class="aside-main-list">
           <ul id="default-list-container" class="aside-ul">
-            <li class="li-default active">
+            <li class="li-default active" id="home-list">
               <div class="aside-li-div">
                 <p class="list-emoticon">🏠</p>
                 <p class="list-text">Home</p>
@@ -41,7 +41,7 @@
               </div> -->
             </li>
 
-            <li class="li-default">
+            <li class="li-default" id="completed-list">
               <div class="aside-li-div">
                 <p class="list-emoticon">✅</p>
                 <p class="list-text">Completed</p>
@@ -125,9 +125,9 @@
 
     <section class="main-section">
       <header>
-        <div class="main-greeting">
+        <div id="main-greeting" class="main-greeting">
           <h1 class="greeting-h1">Good Morning, Alvito! 👋</h1>
-          <p class="greeting-desc">Today, Wed 6 July 2023</p>
+          <!-- <p id="greeting-date" class="greeting-desc">Today, Wed 6 July 2023</p> -->
 
         </div>
 
@@ -136,8 +136,9 @@
         </div>
       </header>
 
-      <section class="ToDoList-mainSection">
-        <div class="ToDoList-frame">
+      <!-- Tab untuk Home -->
+      <section class="ToDoList-mainSection" id="home-tab">
+        <div id="ToDoList-frame" class="ToDoList-frame">
           <ul id="task-container" class="task-ul">
 
             <!-- <li class="task-default active">
@@ -172,7 +173,7 @@
                   <input class="checkbox" value="check" type="checkbox" name="task-checkbox">
                   <p class="task-content-text">Jogging</p>
                   <div class="task-emoticon-wrapper">
-                    <p class="task-emoticon">❤️</p>
+                    <p class="task-emoticon">💪</p>
                   </div>
                 </div>
 
@@ -192,6 +193,76 @@
               </div>
             </li>
 
+            <!-- <li class="task-default">
+              <div class="task-content-wrapper">
+                <div class="task-content">
+                  <input class="checkbox" value="check" type="checkbox" name="task-checkbox">
+                  <p class="task-content-text">Jogging</p>
+                  <div class="task-emoticon-wrapper">
+                    <p class="task-emoticon">❤️</p>
+                  </div>
+                </div>
+
+                <div class="divPriority-low">
+                  <div class="priority-dot">
+                    <img src="assets/img/low_priority.svg" alt="dot">
+                  </div>
+                  <p class="priority-text-low">Low</p>
+                </div>
+              </div>
+
+              <div class="task-date-delete">
+                <p class="task-date">Wed 6 July 2023</p>
+                <div class="task-delete">
+                  <img class="trash-bin" src="/assets/img/trash-bin.svg" alt="trash-bin">
+                </div>
+              </div>
+            </li> -->
+
+
+          </ul>
+        </div>
+
+        <div class="delete-list-wrapper">
+          <button class="delete-list-btn">
+            <p class="delete-list-text">Delete List</p>
+            <div class="list-delete">
+              <img src="/assets/img/trash-bin-red.svg" alt="trash-bin">
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- Tab untuk Completed -->
+      <section class="ToDoList-mainSection" id="completed-tab" style="display: none;">
+        <div class="ToDoList-frame">
+          <ul id="task-container-completed" class="task-ul">
+
+            <!-- <li class="task-default">
+              <div class="task-content-wrapper">
+                <div class="task-content">
+                  <input class="checkbox" value="check" type="checkbox" name="task-checkbox">
+                  <p class="task-content-text">Jogging</p>
+                  <div class="task-emoticon-wrapper">
+                    <p class="task-emoticon">❤️</p>
+                  </div>
+                </div>
+
+                <div class="divPriority-low">
+                  <div class="priority-dot">
+                    <img src="assets/img/low_priority.svg" alt="dot">
+                  </div>
+                  <p class="priority-text-low">Low</p>
+                </div>
+              </div>
+
+              <div class="task-date-delete">
+                <p class="task-date">Wed 6 July 2023</p>
+                <div class="task-delete">
+                  <img class="trash-bin" src="/assets/img/trash-bin.svg" alt="trash-bin">
+                </div>
+              </div>
+            </li> -->
 
           </ul>
         </div>
@@ -207,6 +278,7 @@
       </section>
       
     </section>
+
 
     <div class="create-new-task-wrapper" id="create-task-btn">
       <div class="create-new-task">

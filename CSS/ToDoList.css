@@ -231,8 +231,16 @@
     align-items: center;
     gap: 10px;
     border-radius: 15px;
-    border: 1px solid rgba(47, 43, 66, 0.20);
+    border: 2px solid rgba(47, 43, 66, 0.20);
     background: #F6F6F6;
+    cursor: pointer;
+    transition: background-color 300ms ease 0s, color 300ms ease 0s;
+    transition: border 300ms ease 0s, color 300ms ease 0s;
+}
+
+.delete-list-btn:hover {
+    background: #EBEBEB;
+    border: 2px solid #FF6B6B ;
 }
 
 .delete-list-text {
@@ -453,4 +461,22 @@
 
 .radio-priority:checked + label{
     border: 1px solid #767676;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #767676;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    align-self: auto;
+}
+
+.empty-state p {
+    margin: 0;
 }

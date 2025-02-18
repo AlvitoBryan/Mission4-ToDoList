@@ -45,13 +45,12 @@ function addList(){
     let inputTextID = inputText.value;
     if(inputText.value === ''){
         alert("You must write something");
-        console.log('bisa')
         return;
     }
     if(selected === ''){
         alert("You must choose the emoticon");
-        console.log('berhasil')
     }else{
+        // Membuat list di sidebar
         let list = document.createElement("li");
         list.classList.add('li-default')
         list.id = removeSpaces(inputTextID)
@@ -102,42 +101,114 @@ function addList(){
         list.appendChild(divList);
         divList.appendChild(emoticonList);
         divList.appendChild(textList);
+
+
+        let newTab = document.createElement("section");
+        newTab.classList.add('ToDoList-mainSection');
+        newTab.id = removeSpaces(inputTextID) + '-tab';
+        newTab.style.display = 'none';
+
+        let toDoListFrame = document.createElement("div");
+        toDoListFrame.classList.add('ToDoList-frame');
+
+        let taskUl = document.createElement("ul");
+        taskUl.id = 'task-container-' + removeSpaces(inputTextID);
+        taskUl.classList.add('task-ul');
+
+        let emptyState = document.createElement("div");
+        emptyState.classList.add('empty-state');
+        emptyState.innerHTML = `
+            <p>Your list is empty</p>
+            <p>You can create one if you want</p>
+        `;
+
+        let deleteListWrapper = document.createElement("div");
+        deleteListWrapper.classList.add('delete-list-wrapper');
+        deleteListWrapper.style.display = 'none';
+        
+        let deleteListBtn = document.createElement("button");
+        deleteListBtn.classList.add('delete-list-btn');
+        deleteListBtn.innerHTML = `
+            <p class="delete-list-text">Delete List</p>
+            <div class="list-delete">
+                <img src="/assets/img/trash-bin-red.svg" alt="trash-bin">
+            </div>
+        `;
+
+        toDoListFrame.appendChild(taskUl);
+        newTab.appendChild(emptyState)
+        newTab.appendChild(toDoListFrame);
+        newTab.appendChild(deleteListWrapper);
+        deleteListWrapper.appendChild(deleteListBtn);
+
+        document.querySelector('.main-section').appendChild(newTab);
+
+        switchTab(removeSpaces(inputTextID) + '-tab');
+        
+        document.querySelectorAll(".li-default").forEach(i => i.classList.remove("active"));
+        list.classList.add("active");
     }
     selected = '';
     inputText.value = '';
     modal.close();
     modal.style.display = "none";
-
 }
 
 // CREATE NEW LIST addList() ========================================================================
 
-document.getElementById("list-container").addEventListener("click", function (event) {
-    let clickedItem = event.target.closest(".li-default"); // Cari elemen terdekat dengan class 'li-default'
+document.addEventListener("click", function(event) {
+    let clickedItem = event.target.closest(".li-default");
     
     if (clickedItem) {
-        console.log("Klik terdeteksi pada:", clickedItem.innerText);
-
-        // Hapus 'active' dari semua item
         document.querySelectorAll(".li-default").forEach(i => i.classList.remove("active"));
-
-        // Tambahkan 'active' ke item yang diklik
+        
         clickedItem.classList.add("active");
+
+        if (clickedItem.id === 'home-list') {
+            switchTab('home-tab');
+        } else if (clickedItem.id === 'completed-list') {
+            switchTab('completed-tab');
+        } else {
+            switchTab(clickedItem.id + '-tab');
+        }
     }
 });
 
-document.getElementById("default-list-container").addEventListener("click", function (event) {
-    let clickedItem = event.target.closest(".li-default"); // Cari elemen terdekat dengan class 'li-default'
-    
-    if (clickedItem) {
-        console.log("Klik terdeteksi pada:", clickedItem.innerText);
+let activeTabId = 'home-tab';
 
-        // Hapus 'active' dari semua item
-        document.querySelectorAll(".li-default").forEach(i => i.classList.remove("active"));
+function switchTab(tabId) {
+    document.querySelectorAll('.ToDoList-mainSection').forEach(tab => {
+        tab.style.display = 'none';
+    });
 
-        // Tambahkan 'active' ke item yang diklik
-        clickedItem.classList.add("active");
+    let selectedTab = document.getElementById(tabId);
+    if (selectedTab) {
+        selectedTab.style.display = 'flex';
+        activeTabId = tabId;
     }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    switchTab('home-tab');
+    document.getElementById('home-list').classList.add('active');
+    
+    let homeTab = document.getElementById('home-tab');
+    if (!homeTab.querySelector('.empty-state')) {
+        let emptyState = document.createElement("div");
+        emptyState.classList.add('empty-state');
+        emptyState.innerHTML = `
+            <p>Your list is empty</p>
+            <p>You can create one if you want</p>
+        `;
+        let toDoListFrame = homeTab.querySelector('.ToDoList-frame');
+        if (toDoListFrame) {
+            homeTab.insertBefore(emptyState, toDoListFrame);
+        } else {
+            homeTab.appendChild(emptyState);
+        }
+    }
+    
+    checkContainerEmpty('task-container');
 });
 
 // SIDE LIST ACTIVE BUTTON ====================================================================================================
@@ -196,28 +267,64 @@ let today = new Date();
 let options = { weekday: "short", day: "2-digit", month: "short", year: "numeric" };
 let formattedDate = today.toLocaleDateString("en-GB", options).replace(",", "");
 
+let mainGreeting = document.getElementById('main-greeting');
+
+// MAIN GREETING DATE ====================================
+let greetingDate = document.createElement("p");
+greetingDate.classList.add('greeting-desc')
+greetingDate.innerHTML = 'Today, ' + formattedDate;
+
+mainGreeting.appendChild(greetingDate);
+// =======================================================
+
 function addTask(){
-    console.log('halo')
     let inputTaskID = inputTask.value;
 
     if(inputTask.value === ''){
         alert("You must write something");
-        console.log('bisa')
         return;
     }
     if(selectedTaskPriority === ''){
         alert("You must choose the priority");
-        console.log('mantul')
         return;
     }
     if(selectedTaskEmot === ''){
         alert("You must choose the emoticon");
-        console.log('berhasil')
         return;
     }else{
+        let currentTabId = activeTabId;
+        let taskContainerId;
+        
+        if (currentTabId === 'home-tab') {
+            taskContainerId = 'task-container';
+        } else if (currentTabId === 'completed-tab') {
+            taskContainerId = 'task-container-completed';
+        } else {
+            taskContainerId = 'task-container-' + currentTabId.replace('-tab', '');
+        }
+
+        let taskContainer = document.getElementById(taskContainerId);
+        let currentTab = document.getElementById(currentTabId);
+        
+        if (!taskContainer) {
+            console.error('Task container not found:', taskContainerId);
+            return;
+        }
+
+        if (taskContainerId !== 'task-container-completed') {
+            let emptyState = currentTab.querySelector('.empty-state');
+            if (emptyState) {
+                emptyState.style.display = 'none';
+            }
+        }
+
+        let deleteListWrapper = currentTab.querySelector('.delete-list-wrapper');
+        if (deleteListWrapper) {
+            deleteListWrapper.style.display = 'flex';
+        }
+
         let listTask = document.createElement("li");
         listTask.classList.add('task-default')
-        console.log(removeSpaces(inputTaskID))
         listTask.id = removeSpaces(inputTaskID);
     
         let divTaskWrapper = document.createElement("div");
@@ -372,41 +479,145 @@ function addTask(){
     inputTaskID = ''
     modalTask.close();
     modalTask.style.display = "none";
-
 }
 
 // CREATE NEW TASK addTask() ==========================================================================================================
 
-document.getElementById("task-container").addEventListener("click", function (event) {
+document.addEventListener("click", function (event) {
     let clickedItem = event.target.closest(".task-default");
-    let clickedCheckbox = event.target.closest(".checkbox")
+    let clickedCheckbox = event.target.closest(".checkbox");
     
-    if (clickedItem) {
-        console.log("Klik terdeteksi pada:", clickedItem.innerText);
-        console.log("Klik terdeteksi pada:", clickedCheckbox);
+    if (clickedItem && clickedCheckbox) {
 
-        if (clickedItem.classList.contains("active") && clickedCheckbox.classList.contains("active")) {
-            clickedItem.classList.remove("active");
-            clickedCheckbox.classList.remove("active");
-        }
-        else if(!clickedItem.classList.contains("active") && !clickedCheckbox.classList.contains("active")){
-            clickedItem.classList.add("active");
-            clickedCheckbox.classList.add("active");
+        let isInCompletedTab = clickedItem.closest('#task-container-completed') !== null;
+        
+        let originalContainer = clickedItem.closest('.task-ul');
+        let originalTabId = originalContainer ? originalContainer.id : null;
+
+        if (!isInCompletedTab) {
+            if (!clickedItem.classList.contains("active") && !clickedCheckbox.classList.contains("active")) {
+                clickedItem.classList.add("active");
+                clickedCheckbox.classList.add("active");
+                
+                setTimeout(() => {
+                    
+                    let completedContainer = document.getElementById('task-container-completed');
+                        
+                    let taskClone = clickedItem.cloneNode(true);
+                        
+                    taskClone.querySelector(".checkbox").classList.remove("active");
+                        
+                    completedContainer.appendChild(taskClone);
+                        
+                    clickedItem.remove();
+                        
+                    if (originalTabId) {
+                        checkContainerEmpty(originalTabId);
+                            
+                        setTimeout(() => {
+                            checkContainerEmpty(originalTabId);
+                        }, 100);
+                    }
+                }, 1000);
+            }
+        } else {
+            if (clickedItem.classList.contains("active") && clickedCheckbox.classList.contains("active")) {
+                clickedItem.classList.remove("active");
+                clickedCheckbox.classList.remove("active");
+            } else {
+                clickedItem.classList.add("active");
+                clickedCheckbox.classList.add("active");
+            }
         }
     }
 });
 
-// MAIN TASK LIST ACTIVE BUTTON & ACTIVE CHECKBOX =============================================================================================================================
+// MAIN TASK LIST ACTIVE BUTTON & ACTIVE CHECKBOX =====================================================================
 
 
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("trash-bin")) {
-        let listItem = event.target.closest(".task-default"); // Mencari elemen <li> terdekat
+        let listItem = event.target.closest(".task-default");
         if (listItem) {
-            listItem.remove(); // Hapus elemen <li>
-            console.log("Task deleted:", listItem.innerText); // Debugging log
+            let container = listItem.closest('.task-ul');
+            
+            listItem.classList.add("fade-out");
+            
+            setTimeout(() => {
+                listItem.remove();
+                
+                if (container) {
+                    checkContainerEmpty(container.id);
+                }
+            }, 300);
         }
     }
 });
 
+// CHECK TAB EMPTY FUNCTION ==========================================================
+
+function checkContainerEmpty(containerId) {
+    let container = document.getElementById(containerId);
+    if (!container) return;
+    
+    let tab = container.closest('.ToDoList-mainSection');
+    if (!tab) return;
+    
+    let emptyState = tab.querySelector('.empty-state');
+    let deleteListWrapper = tab.querySelector('.delete-list-wrapper');
+    
+    if (containerId === 'task-container-completed') {
+        if (deleteListWrapper) deleteListWrapper.style.display = 'flex';
+        return;
+    }
+    
+    let taskCount = container.children.length;
+    
+    if (taskCount === 0) {
+        if (emptyState) {
+            emptyState.style.display = 'flex';
+        }
+        if (deleteListWrapper) deleteListWrapper.style.display = 'none';
+    } else {
+        if (emptyState) {
+            emptyState.style.display = 'none';
+        }
+        if (deleteListWrapper) deleteListWrapper.style.display = 'flex';
+    }
+}
+
+// DELETE BUTTON ALL TASK FUNCTION =======================================================
+
+document.addEventListener("click", function(event) {
+    let deleteListBtn = event.target.closest('.delete-list-btn');
+    if (deleteListBtn) {
+        let currentTab = deleteListBtn.closest('.ToDoList-mainSection');
+        let taskContainer = currentTab.querySelector('.task-ul');
+        
+        if (taskContainer) {
+            let tasks = taskContainer.querySelectorAll('.task-default');
+            
+            if (tasks.length > 0) {
+                tasks.forEach((task, index) => {
+                    task.classList.add('fade-out');
+                    
+                    setTimeout(() => {
+                        task.remove();
+                        
+                        if (index === tasks.length - 1) {
+                            checkContainerEmpty(taskContainer.id);
+                        }
+                    }, 300);
+                });
+                
+                let deleteListWrapper = currentTab.querySelector('.delete-list-wrapper');
+                if (deleteListWrapper) {
+                    setTimeout(() => {
+                        deleteListWrapper.style.display = 'none';
+                    }, 300);
+                }
+            }
+        }
+    }
+});
 
