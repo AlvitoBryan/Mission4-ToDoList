@@ -66,6 +66,14 @@
 }
 
 @media only screen and (max-width: 650px) {
+    .create-new-task-wrapper {
+        width: calc(100% - 40px);
+        max-width: none;
+        justify-content: center;
+        left: 20px;
+        transform: none;
+        margin: 0;
+    }
     
     .create-new-task-text {
         font-size: 0.875rem;
@@ -74,9 +82,4 @@
     .create-new-task-shortcut-container {
         display: none;
     }
-
-    .create-new-task-wrapper {
-        justify-content: center;
-    }
-
 }

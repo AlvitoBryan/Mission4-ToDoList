@@ -554,7 +554,7 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// CHECK TAB EMPTY FUNCTION ==========================================================
+// DELETE BUTTON ONE TASK FUNCTION =======================================================
 
 function checkContainerEmpty(containerId) {
     let container = document.getElementById(containerId);
@@ -586,7 +586,7 @@ function checkContainerEmpty(containerId) {
     }
 }
 
-// DELETE BUTTON ALL TASK FUNCTION =======================================================
+// CHECK TAB EMPTY FUNCTION ==========================================================
 
 document.addEventListener("click", function(event) {
     let deleteListBtn = event.target.closest('.delete-list-btn');
@@ -621,3 +621,40 @@ document.addEventListener("click", function(event) {
     }
 });
 
+// DELETE BUTTON ALL TASK FUNCTION =======================================================
+
+window.addEventListener('keydown', function(e) {
+    
+    if (window.innerWidth > 650) {
+    
+        if (e.ctrlKey && e.key.toLowerCase() === 'l') {
+            e.preventDefault();
+            modal.style.display = "flex";
+            modal.showModal();
+        }
+        
+        if (e.ctrlKey && e.key.toLowerCase() === 't') {
+            e.preventDefault();
+            modalTask.style.display = "flex";
+            modalTask.showModal();
+        }
+    }
+});
+
+window.addEventListener('resize', function() {
+
+    if (window.innerWidth <= 650) {
+        
+        if (modal.open) {
+            modal.close();
+            modal.style.display = "none";
+        }
+
+        if (modalTask.open) {
+            modalTask.close();
+            modalTask.style.display = "none";
+        }
+    }
+});
+
+// SHORTCUT FUNCTION =======================================================================

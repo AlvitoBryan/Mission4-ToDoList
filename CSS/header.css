@@ -62,13 +62,6 @@ header {
     .greeting-h1 {
         font-size: 1.688rem;
     }
-
-
-}
-
-@media only screen and (max-width: 870px) {
-
-    
 }
 
 @media only screen and (max-width: 650px) {
@@ -83,6 +76,15 @@ header {
     
     .setting {
         display: none;
+    }   
+
+    header {
+        padding: 10px 16px;
     }
-    
+}
+
+@media only screen and (max-width: 390px) {
+    .greeting-h1 {
+        font-size: 1.25rem;
+    }
 }

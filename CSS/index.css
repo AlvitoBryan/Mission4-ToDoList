@@ -530,8 +530,6 @@ dialog::backdrop {
     .aside-title {
         font-size: 1.25rem;
     }
-
-
 }
 
 @media only screen and (max-width: 870px) {
@@ -545,8 +543,12 @@ dialog::backdrop {
         max-width: none;
         margin: 0;
         margin-bottom: 22px;
+        height: auto;
         max-height: 567px;
     }
+}
+
+@media only screen and (max-width: 650px) {
 
     .shortcut-wrapper {
         display: none;
@@ -556,10 +558,7 @@ dialog::backdrop {
         justify-content: center;
     }
 
-
-
-}
-
-@media only screen and (max-width: 650px) {
-
+    body {
+        padding: 6px;
+    }
 }
