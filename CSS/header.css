@@ -56,3 +56,33 @@ header {
     border-radius: 8px;
     background: #EBEBEB;
 }
+
+@media only screen and (max-width: 970px) {
+
+    .greeting-h1 {
+        font-size: 1.688rem;
+    }
+
+
+}
+
+@media only screen and (max-width: 870px) {
+
+    
+}
+
+@media only screen and (max-width: 650px) {
+    
+    .greeting-h1 {
+        font-size: 1.375rem;
+    }
+    
+    .greeting-desc {
+        font-size: 1rem;
+    }
+    
+    .setting {
+        display: none;
+    }
+    
+}

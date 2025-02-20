@@ -31,13 +31,15 @@
 
 .task-default {
     display: flex;
+    flex-direction: column;
     padding: 11px 20px;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     align-self: stretch;
     border-radius: 15px;
     border: 1px solid rgba(47, 43, 66, 0.20);
     background: #F6F6F6;
+    gap: 10px;
     transition: background-color 300ms ease 0s, color 300ms ease 0s;
 }
 
@@ -81,14 +83,12 @@
 }
 
 .checkbox[type="checkbox"] {
-    height: 25px;
-    width: 25px;
+    transform: scale(1.9);
 }
 
 
 .task-content-text {
     width: auto;
-    max-width: 350px;
     color: #000;
     font-family: Poppins;
     font-size: 1.25rem;
@@ -191,7 +191,7 @@
 
 .task-date-delete {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 20px;
 }
@@ -479,4 +479,31 @@
 
 .empty-state p {
     margin: 0;
+}
+
+@media only screen and (max-width: 970px) {
+
+    .task-date, .priority-text-low, .priority-text-medium, .priority-text-high {
+        font-size: 1rem;
+    }
+
+    .task-content-wrapper {
+        gap: 20px;
+    }
+
+
+}
+
+@media only screen and (max-width: 650px) {
+   
+    .task-date, .priority-text-low, .priority-text-medium, .priority-text-high, .task-content-text {
+        font-size: 0.875rem;
+    }
+
+}
+
+@media only screen and (max-width: 570px) {
+    .task-content-wrapper {
+        flex-wrap: wrap;
+    }
 }
